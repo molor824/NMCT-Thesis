@@ -1,0 +1,89 @@
+\documentclass[12pt, a4paper]{report}
+\usepackage[T2A]{fontenc}
+\usepackage{graphicx}
+\usepackage{multirow}
+\usepackage[left=3cm, right=1.5cm, top=2cm, bottom=2cm]{geometry}
+\usepackage{fontspec}
+\usepackage{titlesec}
+\usepackage{setspace}
+\usepackage{lipsum}
+
+\setmainfont{Times New Roman}
+
+\graphicspath{{images}}
+
+\newcommand{\nmct}{{шинэ монгол технологийн коллеж}}
+\newcommand{\Nmct}{{Шинэ Монгол Технологийн Коллеж}}
+\newcommand{\NMCT}{{ШИНЭ МОНГОЛ ТЕХНОЛОГИЙН КОЛЛЕЖ}}
+
+\renewcommand{\contentsname}{Агуулга}
+
+\titleformat{\chapter}[hang]
+	{\bfseries\huge}
+	{\thechapter.}
+	{1em}
+	{}
+
+\begin{document}
+	\pagestyle{empty}
+	\onehalfspacing
+	
+	% Title page
+	\begin{minipage}[h]{0.2\textwidth}
+		\includegraphics[width=\textwidth]{nmct_logo.png}
+	\end{minipage}
+	\hfill
+	\begin{minipage}[h]{0.8\textwidth}
+		\centering
+		\large
+		\textbf{\NMCT} \\
+		\textbf{\MakeUppercase{компьютерийн ухааны тэнхим}}
+	\end{minipage}
+	\begin{center}
+		\vspace*{\fill}
+		{\Large
+		\singlespacing
+		\MakeUppercase{
+			\textbf{ABU Робокон 2026 тэмцээний бүрэн автомат роботын программчлал} \\
+			/Дэд бакалаврын төгсөлтийн судалгааны ажил/
+		}}
+		\par
+		\vspace{5mm}
+		\begin{tabular}{r l}
+			Удирдсан багш: & Анужин \\
+			Гүйцэтгэсэн оюутан: & /s21c019b/ М. Молор
+		\end{tabular}
+		\vspace*{\fill}
+	\end{center}
+	\begin{center}
+		Улаанбаатар хот \\
+		2025 он
+	\end{center}
+	
+	\newpage
+	
+	% TOC
+	
+	\singlespacing
+	\tableofcontents
+	\thispagestyle{empty}
+	
+	\newpage
+	
+	\pagestyle{plain}
+	\setcounter{page}{1}
+	
+	\section*{Удиртгал}
+	\addcontentsline{toc}{section}{Удиртгал}
+	
+	\lipsum[0-1]
+	
+	\section*{Үндэслэл}
+	\addcontentsline{toc}{section}{Үндэслэл}
+	
+	\lipsum[0-1]
+	
+	% Onol
+	\chapter{Онол}
+	\section{Робоконий дүрэм}
+\end{document}
