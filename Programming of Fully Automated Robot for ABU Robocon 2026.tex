@@ -12,9 +12,7 @@
 
 \graphicspath{{images}}
 
-\newcommand{\nmct}{{шинэ монгол технологийн коллеж}}
-\newcommand{\Nmct}{{Шинэ Монгол Технологийн Коллеж}}
-\newcommand{\NMCT}{{ШИНЭ МОНГОЛ ТЕХНОЛОГИЙН КОЛЛЕЖ}}
+\newcommand{\nmct}{{Шинэ Монгол Технологийн Коллеж}}
 
 \renewcommand{\contentsname}{Агуулга}
 
@@ -25,7 +23,7 @@
 	{}
 
 \begin{document}
-	\pagestyle{empty}
+	\thispagestyle{empty}
 	\onehalfspacing
 	
 	% Title page
@@ -33,11 +31,13 @@
 		\includegraphics[width=\textwidth]{nmct_logo.png}
 	\end{minipage}
 	\hfill
-	\begin{minipage}[h]{0.8\textwidth}
+	\begin{minipage}[h]{0.7\textwidth}
 		\centering
 		\large
-		\textbf{\NMCT} \\
-		\textbf{\MakeUppercase{компьютерийн ухааны тэнхим}}
+		\MakeUppercase{\textbf{
+			\nmct \\
+			компьютерийн ухааны тэнхим
+		}}
 	\end{minipage}
 	\begin{center}
 		\vspace*{\fill}
@@ -81,9 +81,18 @@
 	\section*{Үндэслэл}
 	\addcontentsline{toc}{section}{Үндэслэл}
 	
-	\lipsum[0-1]
+	\lipsum[0-2]
 	
 	% Onol
 	\chapter{Онол}
 	\section{Робоконий дүрэм}
+	Робоконий тоглох зааланд 2 баг өрсөлдөх бөгөөд,
+	заалыг таллан хуваасан байна. Мөн 2 багууд 2 роботтой байх бөгөөд,
+	эдгээрийг R1 ба R2 гэж нэрлэнэ. Үүнд:
+	\begin{enumerate}
+		\item R1 --- Удирдлагатай эсвэл автомат байж болно.
+		\item R2 --- Бүрэн автомат байх бөгөөд
+		ямар ч комманд болон удирдлага авахгүй байна.
+	\end{enumerate}
+	
 \end{document}
