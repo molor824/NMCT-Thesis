@@ -7,14 +7,24 @@
 \usepackage{titlesec}
 \usepackage{setspace}
 \usepackage{lipsum}
+\usepackage{indentfirst}
+\usepackage{tabularx}
 
 \setmainfont{Times New Roman}
 
 \graphicspath{{images}}
 
 \newcommand{\nmct}{{Шинэ Монгол Технологийн Коллеж}}
+\newcommand{\robocon}{{ABU Робокон 2026}}
+\newcommand{\Martialclub}{{Тулааны клуб}}
+\newcommand{\Forest}{{Мэйхуа ой}}
+\newcommand{\Arena}{{Тулааны талбар}}
+\newcommand{\enMartialclub}{{Martial club}}
+\newcommand{\enForest}{{Meihua forest}}
+\newcommand{\enArena}{{Arena}}
 
 \renewcommand{\contentsname}{Агуулга}
+\renewcommand{\figurename}{Зураг}
 
 \titleformat{\chapter}[hang]
 	{\bfseries\huge}
@@ -41,24 +51,28 @@
 	\end{minipage}
 	\begin{center}
 		\vspace*{\fill}
-		{\Large
-		\singlespacing
-		\MakeUppercase{
-			\textbf{ABU Робокон 2026 тэмцээний бүрэн автомат роботын программчлал} \\
-			/Дэд бакалаврын төгсөлтийн судалгааны ажил/
+		{\singlespacing\MakeUppercase{
+			\textbf{\Large ABU Робокон 2026 тэмцээний бүрэн автомат роботын программчлал} \\
+			 /Дэд бакалаврын төгсөлтийн судалгааны ажил/
 		}}
 		\par
 		\vspace{5mm}
-		\begin{tabular}{r l}
-			Удирдсан багш: & Анужин \\
+		\begin{tabularx}{\textwidth}{
+				>{\raggedright\arraybackslash}X
+				>{\raggedleft\arraybackslash}X
+		}
+			Удирдсан багш: & У. Анужин \\
 			Гүйцэтгэсэн оюутан: & /s21c019b/ М. Молор
-		\end{tabular}
+		\end{tabularx}
 		\vspace*{\fill}
 	\end{center}
 	\begin{center}
 		Улаанбаатар хот \\
 		2025 он
 	\end{center}
+	
+	% Title 2
+
 	
 	\newpage
 	
@@ -73,26 +87,52 @@
 	\pagestyle{plain}
 	\setcounter{page}{1}
 	
-	\section*{Удиртгал}
-	\addcontentsline{toc}{section}{Удиртгал}
+	\chapter{Удиртгал}
+
+	Өнөөгийн нийгэмд робот болон автоматжуулалт нь хүмүүсийн хийдэг өдөр тутмын ажилуудыг гүйцэтгэх чадвартай болсоор ирж байна. Үүнтэй зэрэгцэн робот хязгаарлагдмал нөхцөлд хурдан, үр дүнтэй ажиллах хэрэгтэй болсон нь энэхүү салбарыг судлах хэрэгцээг үүсгэж байна.
 	
-	\lipsum[0-1]
+	Эдгээр шаардлагуудыг хангах чадвартай робот программчлах зорилгоор \robocon{} тэмцээнд орсон. Тэмцээн нь өгөгдсөн дүрмийн дагуу багаараа робот угсран, бусад багуудтай өрсөлддөг. Энэ жилийн тэмцээн нь Хонг Конг-д зохион байгуулагдаж байгаа юм. Тэмцээний бүрэм автомат роботын программчлал нь энэхүү судалгааны ажил болно.
 	
-	\section*{Үндэслэл}
-	\addcontentsline{toc}{section}{Үндэслэл}
+	\section{Төлөвлөгөө}
 	
-	\lipsum[0-2]
+	\begin{tabular}{|l|l|l|l|l|}
+		\hline
+		№ & Гүйцэтгэх сэдвийн нэр & Эхлэх хугацаа & Дуусах хугацаа & Гүйцэтгэл \\ \hline
+		1 & Сэдэв сонгох & 2025.09.01 & 2025.10.01 & Гүйцэтгэсэн \\ \hline
+		2 & Төвөлвөгөө гаргах & 2025.10.01 & 2025.10.13 & Гүйцэтгэж байгаа \\ \hline
+		3 & Онолын судалгаа хийх & 2025.10.09 & 2025.11.02 & Гүйцэтгэж байгаа \\ \hline
+		4 & Систем хөгжүүлэлт & 2025.11.03 & 2025.11.13 & Гүйцэтгээгүй \\ \hline
+	\end{tabular}
+	
+	\section{Үндэслэл, ач холбогдол}
+	
+	\section{Зорилго, зорилт}
 	
 	% Onol
 	\chapter{Онол}
 	\section{Робоконий дүрэм}
-	Робоконий тоглох зааланд 2 баг өрсөлдөх бөгөөд,
-	заалыг таллан хуваасан байна. Мөн 2 багууд 2 роботтой байх бөгөөд,
-	эдгээрийг R1 ба R2 гэж нэрлэнэ. Үүнд:
-	\begin{enumerate}
-		\item R1 --- Удирдлагатай эсвэл автомат байж болно.
-		\item R2 --- Бүрэн автомат байх бөгөөд
-		ямар ч комманд болон удирдлага авахгүй байна.
-	\end{enumerate}
+	Робоконий тоглох зааланд 2 баг өрсөлдөх бөгөөд, баг тус бүрд заалын тэн хагас нь оноогдоно. Мөн оноогдсон хэсэг тус бүр нь дотроо 3 zone-д хуваагдах бөгөөд, тэдгээр нь:
+	\begin{itemize}
+		\item \enMartialclub{} --- \Martialclub{}
+		\item \enForest{} --- \Forest{}
+		\item \enArena{} --- \Arena{}
+	\end{itemize}
+	
+	\begin{figure}[h]
+		\includegraphics[width=1\textwidth]{robocon_field.png}
+		\caption{\robocon{} тэмцээний тоглох талбай}
+		\label{fig:robocon_field}
+	\end{figure}
+	
+	Нэг багаас 2 робот өрсөлдөх бөгөөд, үүнд:
+	\begin{itemize}
+		\item R1 робот --- Удирдлагатай эсвэл автомат байж болно.
+		\item R2 робот --- Бүрэн автомат байх бөгөөд ямар ч комманд болон удирдлага авахгүй байна.
+	\end{itemize}
+	
+	\subsection{Martial Club zone}
+	Martial club
+	
+	\chapter{Роботын программчлал}
 	
 \end{document}
