@@ -16,12 +16,6 @@
 
 \newcommand{\nmct}{{Шинэ Монгол Технологийн Коллеж}}
 \newcommand{\robocon}{{ABU Робокон 2026}}
-\newcommand{\Martialclub}{{Тулааны клуб}}
-\newcommand{\Forest}{{Мэйхуа ой}}
-\newcommand{\Arena}{{Тулааны талбар}}
-\newcommand{\enMartialclub}{{Martial club}}
-\newcommand{\enForest}{{Meihua forest}}
-\newcommand{\enArena}{{Arena}}
 
 \renewcommand{\contentsname}{Агуулга}
 \renewcommand{\figurename}{Зураг}
@@ -73,7 +67,6 @@
 	
 	% Title 2
 
-	
 	\newpage
 	
 	% TOC
@@ -113,25 +106,42 @@
 	\section{Робоконий дүрэм}
 	Робоконий тоглох зааланд 2 баг өрсөлдөх бөгөөд, баг тус бүрд заалын тэн хагас нь оноогдоно. Мөн оноогдсон хэсэг тус бүр нь дотроо 3 zone-д хуваагдах бөгөөд, тэдгээр нь:
 	\begin{itemize}
-		\item \enMartialclub{} --- \Martialclub{}
-		\item \enForest{} --- \Forest{}
-		\item \enArena{} --- \Arena{}
+		\item Martial club --- Тулааны клуб
+		\item Meihua forest --- Мэйхуа ой
+		\item Arena --- Тулааны талбар
 	\end{itemize}
+	нэртэй байна.
 	
 	\begin{figure}[h]
 		\includegraphics[width=1\textwidth]{robocon_field.png}
 		\caption{\robocon{} тэмцээний тоглох талбай}
 		\label{fig:robocon_field}
 	\end{figure}
+
+	\newpage
 	
 	Нэг багаас 2 робот өрсөлдөх бөгөөд, үүнд:
 	\begin{itemize}
 		\item R1 робот --- Удирдлагатай эсвэл автомат байж болно.
 		\item R2 робот --- Бүрэн автомат байх бөгөөд ямар ч комманд болон удирдлага авахгүй байна.
 	\end{itemize}
+
+	Мөн Мэйхуа ой дээр 8 ширхэг Күнгфү судар (Kung fu scroll) байрлуулна. Үүнд:
+	\begin{itemize}
+		\item 3 ширхэг R1-ийн судар нь R1 робот авахад зориулсан байх бөгөөд, бүх талдаа тэнцээний логотой байна.
+		\item 4 ширхэг R2-ийн судар нь R2 робот авахад зориулсан байх бөгөөд, бүх талдаа жинхэнэ мэргэний ясан бичиг агуулсан байна.
+		\item Үлдсэн нэг нь хуурамч судар байх ба, аль ч робот авах ёсгүй байхаар, бүх талдаа хуурамч мэргэний ясан бичигтэй байна.
+	\end{itemize}
+	Дүрэм дээр жинхэнэ болон хуурамч мэргэний ясан бичиг тус бүр 15 ширхэг байх ба тэмцээний үеэд эдгээрээс 7 ширхэг жинхэнэ, 1 ширхэг хуурмаг бичиг дурын сонгогдож, Күнгфү сударт бичигдэнэ.
+
+	\begin{figure}[h]
+		\includegraphics[width=\textwidth]{robocon_kfs.png}
+		\caption{\robocon{} тэмцээний Күнгфү сударт тавигдах дүрсүүд.}
+		\label{fig:robocon_kfs}
+	\end{figure}
 	
-	\subsection{Martial Club zone}
-	Martial club
+	\subsection{Тулааны клуб zone}
+	Тулааны клуб zone-оос роботууд хөдөлж эхлэх бөгөөд, роботоо бэлдэх 1 минут өгнө.
 	
 	\chapter{Роботын программчлал}
 	
