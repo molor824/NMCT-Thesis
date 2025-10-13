@@ -1,8 +1,8 @@
-\documentclass[12pt, a4paper]{report}
+\documentclass[11pt, a4paper]{report}
 \usepackage[T2A]{fontenc}
 \usepackage{graphicx}
 \usepackage{multirow}
-\usepackage[left=3cm, right=1.5cm, top=2cm, bottom=2cm]{geometry}
+\usepackage[left=2.5cm, right=2cm, top=2cm, bottom=2cm]{geometry}
 \usepackage{fontspec}
 \usepackage{titlesec}
 \usepackage{setspace}
@@ -14,8 +14,10 @@
 
 \graphicspath{{images}}
 
-\newcommand{\nmct}{{Шинэ Монгол Технологийн Коллеж}}
-\newcommand{\robocon}{{ABU Робокон 2026}}
+\newcommand{\Nmct}{{Шинэ Монгол Технологийн Коллеж}}
+\newcommand{\Major}{{Конпьютерийн Ухааны Тенхим}}
+\newcommand{\Robocon}{{ABU Робокон 2026}}
+\newcommand{\Title}{{ABU Робокон 2026 тэмцээний бүрэн автомат роботын программчлал}}
 
 \renewcommand{\contentsname}{Агуулга}
 \renewcommand{\figurename}{Зураг}
@@ -27,8 +29,8 @@
 	{}
 
 \begin{document}
-	\thispagestyle{empty}
-	\onehalfspacing
+	\singlespacing{}
+	\pagestyle{empty}
 	
 	% Title page
 	\begin{minipage}[h]{0.2\textwidth}
@@ -39,27 +41,36 @@
 		\centering
 		\large
 		\MakeUppercase{\textbf{
-			\nmct \\
-			компьютерийн ухааны тэнхим
+			\Nmct{} \\[3mm]
+			\Major{}
 		}}
 	\end{minipage}
+
+	\vspace{4cm}
+	\begin{flushright}
+		\large
+		\begin{tabular}{r l}
+			Оюутны код: & s21c019b \\[5mm]
+			Оюутны нэр: & М. Молор
+		\end{tabular}
+	\end{flushright}
+
+	\vspace{4cm}
 	\begin{center}
-		\vspace*{\fill}
-		{\singlespacing\MakeUppercase{
-			\textbf{\Large ABU Робокон 2026 тэмцээний бүрэн автомат роботын программчлал} \\
+		{\MakeUppercase{
+			\textbf{\Large \Title{}} \\[5mm]
 			 /Дэд бакалаврын төгсөлтийн судалгааны ажил/
 		}}
-		\par
+		
 		\vspace{5mm}
-		\begin{tabularx}{\textwidth}{
-				>{\raggedright\arraybackslash}X
-				>{\raggedleft\arraybackslash}X
-		}
-			Удирдсан багш: & У. Анужин \\
-			Гүйцэтгэсэн оюутан: & /s21c019b/ М. Молор
-		\end{tabularx}
-		\vspace*{\fill}
+		\large
+		\begin{tabular}{l r}
+			Удирдсан багш: & /У. Анужин/ \\[5mm]
+			Гүйцэтгэсэн оюутан: & /s21c019b М. Молор/
+		\end{tabular}
 	\end{center}
+
+	\vspace{\fill}
 	\begin{center}
 		Улаанбаатар хот \\
 		2025 он
@@ -68,25 +79,66 @@
 	% Title 2
 
 	\newpage
+	\begin{center}
+		\Large
+		\Nmct{} \\[5mm]
+		\Major{}
+		
+		\vspace{6cm}
+		Төгсөлтийн судалгааны ажил (Мэргэжлийн индекс) \\[5mm]
+		\textbf{\Title{}}
+		
+		\large
+		\vspace{3cm}
+		\begin{tabular}[h]{r l}
+			Гүйцэтгэгч: & М. Молор \\[5mm]
+			Удирдагч: & У. Анужин
+		\end{tabular}
+		
+		\vspace{\fill}
+		Улаанбаатар хот \\
+		2025 он
+	\end{center}
+
+	% Huraangui
+	\newpage
+	\pagestyle{plain}
+	\pagenumbering{roman}
+	\setcounter{page}{1}
+
+	\addcontentsline{toc}{chapter}{Хураангүй}
+
+	\begin{center}
+		\MakeUppercase{\textbf{\Large \Title{}}}
+
+		\vspace{5mm}
+		М. Молор \\
+		\Nmct{}, \Major{} \\
+		\textit{s21c019b@nmct.edu.mn}
+	\end{center}
+
+	\vspace{5mm}
+	\noindent
+	\textbf{Хураангуй:} \lipsum[0-1]
+
+	\vspace{10mm}
+	\noindent
+	\textbf{Түлхүүр үг:} \textit{Түлхүүр үг 1}
 	
 	% TOC
 	
-	\singlespacing
 	\tableofcontents
 	\thispagestyle{empty}
 	
 	\newpage
 	
-	\pagestyle{plain}
-	\setcounter{page}{1}
-	
 	\chapter{Удиртгал}
 
-	Өнөөгийн нийгэмд робот болон автоматжуулалт нь хүмүүсийн хийдэг өдөр тутмын ажилуудыг гүйцэтгэх чадвартай болсоор ирж байна. Үүнтэй зэрэгцэн робот хязгаарлагдмал нөхцөлд хурдан, үр дүнтэй ажиллах хэрэгтэй болсон нь энэхүү салбарыг судлах хэрэгцээг үүсгэж байна.
+	\pagestyle{plain}
+	\pagenumbering{arabic}
+	\setcounter{page}{1}
 	
-	Эдгээр шаардлагуудыг хангах чадвартай робот программчлах зорилгоор \robocon{} тэмцээнд орсон. Тэмцээн нь өгөгдсөн дүрмийн дагуу багаараа робот угсран, бусад багуудтай өрсөлддөг. Энэ жилийн тэмцээн нь Хонг Конг-д зохион байгуулагдаж байгаа юм. Тэмцээний бүрэм автомат роботын программчлал нь энэхүү судалгааны ажил болно.
-	
-	\section{Төлөвлөгөө}
+	\section{Ажлын Төлөвлөгөө}
 	
 	\begin{tabular}{|l|l|l|l|l|}
 		\hline
@@ -96,6 +148,11 @@
 		3 & Онолын судалгаа хийх & 2025.10.09 & 2025.11.02 & Гүйцэтгэж байгаа \\ \hline
 		4 & Систем хөгжүүлэлт & 2025.11.03 & 2025.11.13 & Гүйцэтгээгүй \\ \hline
 	\end{tabular}
+
+
+	Өнөөгийн нийгэмд робот болон автоматжуулалт нь хүмүүсийн хийдэг өдөр тутмын ажилуудыг гүйцэтгэх чадвартай болсоор ирж байна. Үүнтэй зэрэгцэн робот хязгаарлагдмал нөхцөлд хурдан, үр дүнтэй ажиллах хэрэгтэй болсон нь энэхүү салбарыг судлах хэрэгцээг үүсгэж байна.
+	
+	Эдгээр шаардлагуудыг хангах чадвартай робот программчлах зорилгоор \Robocon{} тэмцээнд орсон. Тэмцээн нь өгөгдсөн дүрмийн дагуу багаараа робот угсран, бусад багуудтай өрсөлддөг. Энэ жилийн тэмцээн нь Хонг Конг-д зохион байгуулагдаж байгаа юм. Тэмцээний бүрэм автомат роботын программчлал нь энэхүү судалгааны ажил болно.
 	
 	\section{Үндэслэл, ач холбогдол}
 	
@@ -114,7 +171,7 @@
 	
 	\begin{figure}[h]
 		\includegraphics[width=1\textwidth]{robocon_field.png}
-		\caption{\robocon{} тэмцээний тоглох талбай}
+		\caption{\Robocon{} тэмцээний тоглох талбай}
 		\label{fig:robocon_field}
 	\end{figure}
 
@@ -136,7 +193,7 @@
 
 	\begin{figure}[h]
 		\includegraphics[width=\textwidth]{robocon_kfs.png}
-		\caption{\robocon{} тэмцээний Күнгфү сударт тавигдах дүрсүүд.}
+		\caption{\Robocon{} тэмцээний Күнгфү сударт тавигдах дүрсүүд.}
 		\label{fig:robocon_kfs}
 	\end{figure}
 	
