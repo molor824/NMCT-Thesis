@@ -209,17 +209,50 @@
 
 	Датасет боловсруулахад Unity гэх видео тоглоом хийхэд зориулсан систем ашиглаж, симуляцийн орчин үүсгэж, датасетээ боловсруулна.
 
+	Unity нь 2 хэмжээст болон 3 хэмжээст видео тоглоом хийхэд зориулагдсан game engine юм. Unity нь өндөр чанартай бодит амьдралтай ойролцоо гэрэлтүүлэг, сүүдэр, камерийн эффект тохируулснаар, янз бүрийн гэрэлтүүлэг, сүүдэр, бүрэлзэх, г.м. тохиолдлуудыг симуляц хийж, өндөр чанартай сургалтын датасет боловсруулах чадвартай байна.
+
 	\begin{figure}[h]
 		\centering
 		\includegraphics[width=0.5\textwidth]{unity.png}
 		\caption{Unity Game Engine лого}
 		\label{fig:unity}
 	\end{figure}
+	
+	\subsection{Модель үүсгэх}
+	
+	Симуляцийн орчин бүрдүүлэхэд тоглох талбай болон судруудын модель үүсгэх хэрэгтэй.
+	
+	Тоглох талбайн хэмжээ нь дүрэм дээр өгөгдсөн байгаа бөгөөд, талбайг загварчлахдаа FreeCAD ашиглсан загварчилсан болно.
 
 	\begin{figure}[h]
 		\centering
-		\includegraphics[width=0.8\textwidth]{sample_cube.png}
-		\caption{Blender дээр хийсэн симуляц орчны туршилт}
+		\includegraphics[width=\textwidth]{robocon-field-blueprint.png}
+		\caption{Робокон тэмцээний дүрэм дээр заасан тоглох талбайн хэмжээ}
+		\label{fig:field-blueprint}
+	\end{figure}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=0.7\textwidth]{logo-freecad.png}
+		\caption{FreeCAD лого}
+		\label{fig:freecad}
+	\end{figure}
+	
+	FreeCAD нь математик тооцооллоор геометр дүрсүүд ашиглан биет бүтээдэг билээ. Гэвч Unity нь зөвхөн гурвалжин дүрсээр бүрдэх торон бүтэцтэй биетийг зурах чадвартай байдаг байна. Үүнд зориулсан гурвалжин торлог бүтэц агуулах файлын формат төрөл бүр байдаг бөгөөд, өргөн хэрэглэгддэг .stl болон .fbx форматуудыг ашигласан болно.
+
+	.stl формат нь FreeCAD программын үүсгэж чадах формат бөгөөд, торон биетийн гурвалжин бүрийн өнцгүүдийн координатыг хадгалдаг формат юм.
+
+	.fbx формат нь .stl форматтай адил торон биетийн бүтцийг хадгалахаас гадна тухайн биет ямар өнгөтэй, гэрлэнд ойх чанар, барзгар болон тэгш гадаргуу г.м. материаллаг шинж чанар хадгалах чадвартай байна. Энэ форматыг FreeCAD гаргах чадваргүй тул Blender ашиглан, .stl форматтай биетэд материаллаг шинж чанар олгож, .fbx форматруу хөрвүүлсэн болно.
+	
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=\textwidth]{field-model-freecad.png}
+		\caption{FreeCAD дээр үүсгэсэн тоглох талбайн модель}
+	\end{figure}
+	\begin{figure}[h]
+		\centering
+		\includegraphics[width=\textwidth]{field-model-blender.png}
+		\caption{Blender дээр тоглох талбайн модельд материал олгосны дараа}
+		\label{fig:field-blender}
 	\end{figure}
 
 	\newpage
