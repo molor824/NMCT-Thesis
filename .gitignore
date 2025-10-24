@@ -1,8 +1,10 @@
 *
+!.vscode/
+!.vscode/settings.json
 !images/
-!images/**
+!images/*.png
+!images/*.svg
 !models/
-!models/*.blend
 !models/*.FCStd
+!models/*.blend
 !*.tex
-!.gitignore
