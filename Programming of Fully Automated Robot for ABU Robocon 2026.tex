@@ -9,6 +9,7 @@
 \usepackage{lipsum}
 \usepackage{indentfirst}
 \usepackage{tabularx}
+\usepackage{array}
 
 \setmainfont{Times New Roman}
 
@@ -18,17 +19,24 @@
 \newcommand{\Major}{{Конпьютерийн Ухааны Тенхим}}
 \newcommand{\Robocon}{{ABU Робокон 2026}}
 \newcommand{\Title}{{ABU Робокон 2026 тэмцээний бүрэн автомат роботын программчлал}}
+\newcommand{\rownum}{\stepcounter{rownum}\arabic{rownum}}
+\newcommand{\rownumreset}{\setcounter{rownum}{0}}
 
 \renewcommand{\contentsname}{Агуулга}
 \renewcommand{\figurename}{Зураг}
+\renewcommand{\tablename}{Хүснэгт}
+\renewcommand{\listtablename}{Хүснэгтийн жагсаалт}
+\renewcommand{\listfigurename}{Зургийн жагсаалт}
 
 \titleformat{\chapter}[hang]
 	{\bfseries\huge}
 	{\thechapter.}
 	{1em}
 	{}
-
+	
 \begin{document}
+	\newcounter{rownum}
+
 	\singlespacing{}
 	\pagestyle{empty}
 	
@@ -100,13 +108,14 @@
 		2025 он
 	\end{center}
 
-	% Huraangui
+	% Roman numbering
 	\newpage
 	\pagestyle{plain}
 	\pagenumbering{roman}
 	\setcounter{page}{1}
-
-	\addcontentsline{toc}{chapter}{Хураангүй}
+	
+	% Huraangui
+	\addcontentsline{toc}{chapter}{Хураангуй}
 
 	\begin{center}
 		\MakeUppercase{\textbf{\Large \Title{}}}
@@ -124,9 +133,14 @@
 	\vspace{10mm}
 	\noindent
 	\textbf{Түлхүүр үг:} \textit{Түлхүүр үг 1}
+
+	% LOF/LOT
+	\listoffigures
+	\addcontentsline{toc}{chapter}{Зургийн жагсаалт}
+	\listoftables
+	\addcontentsline{toc}{chapter}{Хүснэгтийн жагсаалт}
 	
 	% TOC
-	
 	\tableofcontents
 	\thispagestyle{empty}
 	
@@ -140,14 +154,24 @@
 	
 	\section{Ажлын Төлөвлөгөө}
 	
-	\begin{tabular}{|l|l|l|l|l|}
-		\hline
-		№ & Гүйцэтгэх сэдвийн нэр & Эхлэх хугацаа & Дуусах хугацаа & Гүйцэтгэл \\ \hline
-		1 & Сэдэв сонгох & 2025.09.01 & 2025.10.01 & Гүйцэтгэсэн \\ \hline
-		2 & Төвөлвөгөө гаргах & 2025.10.01 & 2025.10.13 & Гүйцэтгэж байгаа \\ \hline
-		3 & Онолын судалгаа хийх & 2025.10.09 & 2025.11.02 & Гүйцэтгэж байгаа \\ \hline
-		4 & Систем хөгжүүлэлт & 2025.11.03 & 2025.11.13 & Гүйцэтгээгүй \\ \hline
-	\end{tabular}
+	\begin{table}[h]
+		\centering
+		\rownumreset{}
+		\begin{tabular}{|r|l|l|l|l|}
+			\hline
+			№ & Гүйцэтгэх сэдвийн нэр & Эхлэх хугацаа & Дуусах хугацаа & Тайлбар \\ \hline
+			\rownum & Сэдэв сонгох & 2025.09.01 & 2025.10.01 & Гүйцэтгэсэн \\ \hline
+			\rownum & Онолын судалгаа хийх 1 & 2025.10.09 & 2025.10.24 & Гүйцэтгэсэн \\ \hline
+			\rownum & Төвөлвөгөө гаргах & 2025.10.27 & 2025.10.30 & Гүйцэтгэж байна \\ \hline
+			\rownum & Тогтмол үзлэг 1 & 2025.10.31 & 2025.10.31 & Үзлэг \\ \hline
+			\rownum & Тогтмол Үзлэг 2 & 2025.11.14 & 2025.11.14 & Үзлэг \\ \hline
+			\rownum & Систем хөгжүүлэлт & 2025.11.03 & 2025.11.28 & Гүйцэтгээгүй \\ \hline
+			\rownum & Тогтмол Үзлэг 3 & 2025.11.28 & 2025.11.28 & Үзлэг \\ \hline
+			\rownum & Урьдчилсан Үзлэг & 2025.12.05 & 2025.12.05 & Үзлэг \\ \hline
+		\end{tabular}
+		\caption{Ажлын төлөвлөгөө}
+		\label{table:plan}
+	\end{table}
 
 	\section{Үндэслэл, ач холбогдол}
 	Өнөөгийн нийгэмд робот болон автоматжуулалт нь хүмүүсийн хийдэг өдөр тутмын ажилуудыг гүйцэтгэх чадвартай болсоор ирж байна. Үүнтэй зэрэгцэн робот хязгаарлагдмал нөхцөлд хурдан, үр дүнтэй ажиллах хэрэгтэй болсон нь энэхүү салбарыг судлах хэрэгцээг үүсгэж байна.
@@ -155,6 +179,19 @@
 	Эдгээр шаардлагуудыг хангах чадвартай робот программчлах зорилгоор \Robocon{} тэмцээнд орсон. Тэмцээн нь өгөгдсөн дүрмийн дагуу багаараа робот угсран, бусад багуудтай өрсөлддөг. Энэ жилийн тэмцээн нь Хонг Конг-д зохион байгуулагдаж байгаа юм. Тэмцээний бүрэм автомат роботын программчлал нь энэхүү судалгааны ажил болно.
 	
 	\section{Зорилго, зорилт}
+	
+	\subsection{Зорилго}
+	\Robocon{} тэмцээнд зориулсан дүрмийн дагуу ажиллах чадвартай робот программчилна. Цаашид энэхүү судалгааны ажил нь зураг дүрс таних систем, автоматаар шийдвэр гаргах систем шаардагдах робот болон технологиудад хэрэглэгдэх боломжтой билээ.
+	
+	\subsection{Зорилт}
+	\begin{enumerate}
+		\item Робокон тэмцээний дүрэмтэй танилцах
+		\item Симуляцийн орчин үүсгэх
+		\item Сургалтын датасет үүсгэх
+		\item Судар таних систем сургалт
+		\item Икс окс тоглох систем сургалт
+		\item Сайжруулалт
+	\end{enumerate}
 	
 	% Onol
 	\chapter{Онолын судалгаа}
