@@ -9,3 +9,5 @@
 !models/*.blend
 !*.tex
 !chapters
+!diagrams
+!diagrams/*.drawio
