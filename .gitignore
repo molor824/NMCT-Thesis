@@ -11,3 +11,6 @@
 !chapters
 !diagrams
 !diagrams/*.drawio
+!references
+!references/*
+
