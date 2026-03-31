@@ -1,168 +1,126 @@
-\documentclass[11pt, a4paper]{report}
-\usepackage[T2A]{fontenc}
-\usepackage{graphicx}
-\usepackage{multirow}
-\usepackage[left=2.5cm, right=2cm, top=2cm, bottom=2cm]{geometry}
+\documentclass[11pt]{Thesis}
 \usepackage{fontspec}
-\usepackage{titlesec}
-\usepackage{setspace}
-\usepackage{lipsum}
-\usepackage{indentfirst}
-\usepackage{tabularx}
-\usepackage{array}
-\usepackage{multirow}
-
 \setmainfont{Times New Roman}
+\setsansfont{Arial}
+\setmonofont[Scale=0.9]{Consolas}
+\usepackage{polyglossia}
+\setdefaultlanguage{mongolian}
+\setotherlanguage{english}
+\usepackage{wrapfig}
+\usepackage{multirow}
+\usepackage{amssymb}
+\usepackage{indentfirst}
+\usepackage{multicol}
+\usepackage{listings}
+\usepackage{tikz}
+\usepackage{xcolor}
+\usepackage{colortbl}
+\usetikzlibrary{positioning}
+\usetikzlibrary{arrows.meta}
+\usetikzlibrary{shapes.geometric}
+\usetikzlibrary{fit}
+\usetikzlibrary{calc}
+\usetikzlibrary{backgrounds}
+\usetikzlibrary{decorations.pathreplacing}
+\usetikzlibrary{shadows}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\usepgfplotslibrary{fillbetween}
+\usetikzlibrary{pgfplots.fillbetween}
 
-\graphicspath{{images}}
+% Code listing тохиргоо
+\lstset{
+    basicstyle=\ttfamily\small,
+    breaklines=true,
+    frame=single,
+    numbers=left,
+    numberstyle=\tiny,
+    keywordstyle=\color{blue},
+    commentstyle=\color{green!60!black},
+    stringstyle=\color{red},
+    showstringspaces=false
+}
 
-\newcommand{\Nmct}{{Шинэ Монгол Технологийн Коллеж}}
-\newcommand{\Major}{{Конпьютерийн Ухааны Тенхим}}
-\newcommand{\Robocon}{{ABU Робокон 2026}}
-\newcommand{\Title}{{ABU Робокон 2026 тэмцээний бүрэн автомат роботын программчлал}}
-\newcommand{\rownum}{\stepcounter{rownum}\arabic{rownum}}
-\newcommand{\rownumreset}{\setcounter{rownum}{0}}
-
-\renewcommand{\contentsname}{Агуулга}
-\renewcommand{\figurename}{Зураг}
-\renewcommand{\tablename}{Хүснэгт}
-\renewcommand{\listtablename}{Хүснэгтийн жагсаалт}
-\renewcommand{\listfigurename}{Зургийн жагсаалт}
-\renewcommand{\bibname}{Ном зүй}
-
-\titleformat{\chapter}[hang]
-	{\bfseries\huge}
-	{\thechapter.}
-	{1em}
-	{}
-	
 \begin{document}
-	\newcounter{rownum}
+\frenchspacing
+\captionsetup{labelfont=bf, textfont=it}
+\pagenumbering{roman}
+\pagestyle{fancy}
 
-	\singlespacing{}
-	\pagestyle{empty}
-	
-	% Title page
-	\begin{minipage}[h]{0.2\textwidth}
-		\includegraphics[width=\textwidth]{nmct_logo.png}
-	\end{minipage}
-	\hfill
-	\begin{minipage}[h]{0.7\textwidth}
-		\centering
-		\large
-		\MakeUppercase{\textbf{
-			\Nmct{} \\[3mm]
-			\Major{}
-		}}
-	\end{minipage}
+\input{Information}
 
-	\vspace{4cm}
-	\begin{flushright}
-		\large
-		\begin{tabular}{r l}
-			Оюутны код: & s21c019b \\[5mm]
-			Оюутны нэр: & М. Молор
-		\end{tabular}
-	\end{flushright}
+%---------
+%	Нүүр хуудас / Дотор нүүр
+%---------
+\input{Chapters/CoverPage}
+\input{Chapters/TitlePage}
 
-	\vspace{4cm}
-	\begin{center}
-		{\MakeUppercase{
-			\textbf{\Large \Title{}} \\[5mm]
-			 /Дэд бакалаврын төгсөлтийн судалгааны ажил/
-		}}
-		
-		\vspace{5mm}
-		\large
-		\begin{tabular}{l r}
-			Удирдсан багш: & У. Анужин /Магистрат/ \\[5mm]
-			Гүйцэтгэсэн оюутан: & М. Молор
-		\end{tabular}
-	\end{center}
+%---------
+%	Хураангуй (i)
+%---------
+\newpage
+\input{Chapters/Abstract}
 
-	\vspace{\fill}
-	\begin{center}
-		Улаанбаатар хот \\
-		2025 он
-	\end{center}
-	
-	% Title 2
+%---------
+%	Агуулга / Гарчиг (ii)
+%---------
+\newpage
+\tableofcontents
 
-	\newpage
-	\begin{center}
-		\Large
-		\Nmct{} \\[5mm]
-		\Major{}
-		
-		\vspace{6cm}
-		Төгсөлтийн судалгааны ажил (Мэргэжлийн индекс) \\[5mm]
-		\textbf{\Title{}}
-		
-		\large
-		\vspace{3cm}
-		\begin{tabular}[h]{r l}
-			Гүйцэтгэгч: & М. Молор \\[5mm]
-			Удирдагч: & У. Анужин
-		\end{tabular}
-		
-		\vspace{\fill}
-		Улаанбаатар хот \\
-		2025 он
-	\end{center}
+%---------
+%	Товчилсон үгсийн жагсаалт (iii)
+%---------
+\input{Chapters/acrolist}
 
-	% Roman numbering
-	\newpage
-	\pagestyle{plain}
-	\pagenumbering{roman}
-	\setcounter{page}{1}
-	
-	% Huraangui
-	\addcontentsline{toc}{chapter}{Хураангуй}
+%---------
+%	Хүснэгтийн жагсаалт (iv)
+%---------
+\newpage
+\listoftab
 
-	\begin{center}
-		\MakeUppercase{\textbf{\Large \Title{}}}
+%---------
+%	Зургийн жагсаалт (v)
+%---------
+\newpage
+\listoffig
 
-		\vspace{5mm}
-		М. Молор \\
-		\Nmct{}, \Major{} \\
-		\textit{s21c019b@nmct.edu.mn}
-	\end{center}
+%---------
+%	Үндсэн хэсэг
+%---------
 
-	\vspace{5mm}
-	\noindent
-	\textbf{Хураангуй:}
-	ABU Робокон тэмцээн нь жил бүр их сургуулиудад зохион байгуулагддаг тэмцээн бөгөөд, энэхүү тэмцээнээр багууд дүрмийн дагуу даалгавар биелүүлэх чадвартай робот угсарч, өрсөлдөгч багтай уралдаж тоглодог тэмцээн юм.
+\newpage
+\pagenumbering{arabic}
+\setcounter{page}{1}
 
-	Энэ жилийн тэмцээн нь R1 болон R2 гэсэн 2 робот угсарч, өрсөлдөх бөгөөд, R1 робот нь удирдлагатай байж болох ч, R2 нь бүрэн автомат байх ёстой юм. Энэ нь дүрс таних, шийдвэр гаргах, саад бартаа туулах зэрэг компьютерын ухааны салбартай холбоотой олон төрлийн алгоритмын программчлал шаардагдах тул энэхүү судалгааны ажилын хүрээнд дүрс таних болон шийдвэр гаргах шийдлүүдийг судалсан болно.
+% 1-р бүлэг: Ажлын төлөвлөгөө
+\input{Chapters/plan}
 
-	\vspace{10mm}
-	\noindent
-	\textbf{Түлхүүр үг:} \textit{Робокон, Дүрс таних, Шийдвэр гаргах, Робот}
+% 2-р бүлэг: Удиртгал
+\input{Chapters/Chapter1_Introduction}
 
-	% LOF/LOT
-	\listoffigures
-	\addcontentsline{toc}{chapter}{Зургийн жагсаалт}
-	\listoftables
-	\addcontentsline{toc}{chapter}{Хүснэгтийн жагсаалт}
-	
-	% TOC
-	\tableofcontents
-	\thispagestyle{empty}
-	
-	\newpage
-	\include{chapters/introduction}
-	
-	% Onol
-	\include{chapters/onol}
+% 3-р бүлэг: Судалгааны сэдвийн онол, өнөөгийн түвшин
+\input{Chapters/Chapter2_Literature}
 
-	% Argazui
-	\include{chapters/argazui}
-	
-	% Ur dun
-	\include{chapters/result}
+% 4-р бүлэг: Судалгааны арга зүй
+\input{Chapters/Chapter3_Methodology}
 
-	% Nomzui
-	\bibliographystyle{plain}
-	\bibliography{refs}
+% 5-р бүлэг: Судалгааны үр дүн, дүгнэлт
+\input{Chapters/Chapter4_Results}
+\input{Chapters/Chapter5_Conclusion}
+
+%---------
+%	Ном зүй
+%---------
+\input{Chapters/Bibliography}
+
+%---------
+%	Хавсралт
+%---------
+% \input{Chapters/appendix}
+
+%---------
+%	Талархал
+%---------
+% \input{Chapters/Talarhal}
 
 \end{document}
