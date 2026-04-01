@@ -8,14 +8,14 @@
 
 \sloppy
 
-Энэхүү судалгааны ажлаар машин сургалтын ансамбль аргуудыг ашиглан валютын зах зээл (Forex) дээрх EUR/USD хослолын үнийн чиг хандлагыг таамаглах, автомат арилжааны дохио үүсгэх систем болон гар утасны аппликейшн хөгжүүлсэн.
+ABU Robocon 2026 тэмцээний "Kung Fu Quest" сэдвийн хүрээнд R2 бүрэн автомат робот нь Meihua Forest-оос зөв Күнг Фү судрыг таниж, Тик-Так-Тое тавцанд хүний оролцоогүйгээр судрыг байрлуулах шаардлагатай. Уг шаардлагын үндсэн дээр объект таних болон шийдвэр гаргах алгоритмыг нэгтгэж хөгжүүлнэ.
 
-Системийн цөм нь LightGBM, XGBoost, CatBoost гэсэн гурван градиент нэмэгдүүлсэн шийдвэрийн модны (GBDT) ансамбль загвар юм. Загваруудыг 2015--2022 оны $\sim$2.97 сая candle ашиглан сургаж, 2023 оны 371,000 candle-аар баталгаажуулж, 2024 оны 371,000 candle-д тестэлсэн. Walk-forward validation аргачлалыг хэрэглэж overfitting-ийн эрсдэлийг бууруулсан. 6 хугацааны интервалаас (M1--H4) нийт 48 техник индикатор тооцоолж, олон хугацааны хүрээний дүн шинжилгээг хэрэгжүүлсэн.
+Энэхүү судалгааны ажил нь R2 роботын програмчлалын үндсэн хоёр алгоритмыг боловсруулахад чиглэнэ. Объект таних алгоритмд YOLOv12-ийг сонгон хэрэгжүүлж, шийдвэр гаргах алгоритмд төгсгөлөг төлөвт машин (Finite State Machine)-ыг ашиглав. Судалгааны туршилт болон хөгжүүлэлтийг Unity симуляцийн орчинд гүйцэтгэсэн бөгөөд YOLOv12-ын машин сургалтад шаардлагатай датасетийг мөн тус орчинг ашиглаж бэлтгэсэн. Хөгжүүлсэн алгоритмуудын ажиллагааг симуляцийн орчинд туршиж, үр дүнг танилцуулна.
 
-2025 оны backtest дүн: 10,000\$ анхны хөрөнгөөс 14,161.20\$ болж \textbf{+41.61\%} өгөөж, \textbf{Profit Factor 2.46}, \textbf{Sharpe Ratio 9.64}, \textbf{хамгийн их уналт 3.93\%} хүрсэн. React Native технологи дээр суурилсан ``Predictrix'' мобайл аппликейшн нь бодит цагийн ханш, ML дохио, эдийн засгийн мэдээ, хэрэглэгчийн баталгаажуулалт зэрэг бүрэн функцийг хэрэгжүүлсэн.
+Объект таних алгоритм сургалтын үр дүн: симуляцийн орчинд туршилт явуулахад бүрэн үзэгдэж буй объектуудыг \textbf{90\%}-ээс өндөр хувийн итгэлтэйгээр таниж байсан бол тал хэсэг нь халхлагдсан объектуудыг \textbf{70\%}-аас өндөр хувийн итгэлтэйгээр таниж чадаж байсан. Мөн туршилтын үед камерийн байрлалыг төрөл бүрийн өнцөгөөс туршихад ойролцоогоор \textbf{12 объектийн 11-ийг} нь зөв таниж байсан.
 
 \vspace{3mm}
-\textit{Түлхүүр үгс:} машин сургалт, ансамбль загвар, валютын зах зээл, GBDT, XGBoost, LightGBM, CatBoost, техник шинжилгээ, арилжааны дохио, React Native, backtest
+\textit{Түлхүүр үгс:} машин сургалт, төгсгөлөг төлөвт машин, объект таних алгоритм, шийдвэр гаргах алгоритм
 
 \vspace{10mm}
 
@@ -24,11 +24,11 @@
 \end{center}
 
 \begin{english}
-This research develops an automated trading signal generation system and mobile application for predicting EUR/USD price movements in the Forex market using machine learning ensemble methods.
+Under the theme of ABU Robocon 2026, Kung Fu Quest, the R2 fully automated robot needs to identify the correct Kung Fu scriptures from Meihua Forest and place the scriptures on the Tic-Tac-Toe board without human intervention. Based on these requirements, object recognition and decision-making algorithms will be integrated and developed.
 
-The core of the system is an ensemble of three Gradient Boosted Decision Tree (GBDT) models: LightGBM (496 trees), XGBoost ($\sim$400 trees), and CatBoost (499 trees). The models were trained on $\sim$2.97 million bars from 2015--2022, validated on 371,000 bars from 2023, and tested on 371,000 bars from 2024. Walk-forward validation methodology was employed to mitigate overfitting risks. A total of 48 technical features were computed from 6 timeframes (M1, M5, M15, M30, H1, H4), implementing multi-timeframe analysis.
+This research work focuses on the development of two basic algorithms for R2 robot programming. YOLOv12 was selected for the object recognition algorithm and Finite State Machine was used for the decision making algorithm. Research testing and development were performed in the Unity simulation environment, and the datasets required for YOLOv12 machine learning were also prepared using the same environment. The performance of the developed algorithms is tested in a simulation environment and the results are presented.
 
-Backtest results for 2025: starting from \$10,000 initial capital, the system achieved \$14,161.20 final balance (\textbf{+41.61\%} return), \textbf{Profit Factor 2.46}, \textbf{Sharpe Ratio 9.64}, and \textbf{Maximum Drawdown 3.93\%}. The ``Predictrix'' mobile application, built with React Native, provides real-time exchange rates, ML signals, economic news, and user authentication.
+Object recognition algorithm training results: when tested in a simulated environment, fully visible objects were recognized with a higher than \textbf{90\%} confidence level, while partially obscured objects were recognized with a higher than \textbf{70\%} confidence level. And when testing the camera's position from various angles during testing, it correctly identified \textbf{11 out of 12} objects.
 
 \vspace{3mm}
 \textit{Keywords: machine learning, ensemble model, foreign exchange market, GBDT, XGBoost, LightGBM, CatBoost, technical analysis, trading signals, React Native, backtesting}
