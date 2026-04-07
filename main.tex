@@ -43,8 +43,14 @@
 }
 
 \begin{document}
+\setcounter{secnumdepth}{3}
+\setcounter{tocdepth}{3}
+\titleformat{\subsection}
+	{\normalfont\normalsize\bfseries}
+	{\thesubsection}{1em}{}
+
 \frenchspacing
-\captionsetup{labelfont=bf, textfont=it}
+% \captionsetup{labelfont=bf, textfont=it}
 \pagenumbering{roman}
 \pagestyle{fancy}
 
