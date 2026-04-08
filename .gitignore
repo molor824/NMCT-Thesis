@@ -13,3 +13,4 @@
 *.pdf
 _build/
 _texput.log
+_minted-main/
