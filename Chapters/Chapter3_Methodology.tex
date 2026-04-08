@@ -48,14 +48,18 @@ Unity нь өндөр чанартай, бодитой симуляцийн ор
 def generate_label(object):
     if object is not visible: # Хэрэв объект харагдахгүй бол тайлбар үүсэхгүй
         return None
-    vertices = object.vertices
-    minimum = None
-    maximum = None
+    vertices = object.vertices # Объектийн торон бүтцийн өнцөгүүд
+    minimum = None # Хамгийн бага цэг
+    maximum = None # Хамгийн их цэг
     for vertex in vertices:
+        # Камерийн координат руу шилжүүлнэ
         vertex2 = camera.world_to_screen_point(vertex)
+        # Хэрэв хамгийн бага цэг нь тодорхойлогдоогүй эсвэл vertex2 нь хамгийн бага цэг бол хамгийн бага цэгийг шинэчлэнэ
         if minimum is None or vertex2 < minimum:
             minimum = vertex2
+        # Хэрэв хамгийн их цэг нь тодорхойлогдоогүй эсвэл vertex2 нь хамгийн их цэг бол хамгийн их цэгийг шинэчлэнэ
         if maximum is None or vertex2 > maximum:
             maximum = vertex2
+    # Эцэст нь хамгийн бага болон хамгийн их цэгийн хүрээнд үүсэх дөрвөлжин нь объектийн зааг болно.
     return rectangle(minimum, maximum)
 \end{minted}
