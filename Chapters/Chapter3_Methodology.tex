@@ -101,14 +101,85 @@ def generate_label(object):
     \item \textbf{Фокуслах} --- Камерыг тоглогч объект луу чиглүүлнэ.
     \item \textbf{Эргүүлэх} --- Камерыг гурван тэнхлэгийн дагуу санамсаргүй өнцгөөр эргүүлнэ:
     \begin{itemize}
-        \item $Y$ тэнхлэг: $0^\circ$--$360^\circ$ (бүх чиглэлийг хамрах)
-        \item $X$ тэнхлэг: $-30^\circ$--$+30^\circ$ (дээрээс болон доороос харах өнцөг)
-        \item $Z$ тэнхлэг: $-20^\circ$--$+20^\circ$ (налуу өнцөг)
+        \item $Y$ тэнхлэг: $0^\circ$-с $360^\circ$ (бүх чиглэлийг хамрах)
+        \item $X$ тэнхлэг: $-30^\circ$-с $+30^\circ$ (дээрээс болон доороос харах өнцөг)
+        \item $Z$ тэнхлэг: $-20^\circ$-с $+20^\circ$ (налуу өнцөг)
     \end{itemize}
     \item \textbf{Offset нэмэх} --- Камерын эцсийн байрлалд баруун, зүүн, дээш, доош чиглэлд санамсаргүй координатын шилжилт нэмж, байршлыг нарийвчлан тохируулна.
 \end{enumerate}
 
 Энэхүү аргаар камерыг олон янзын байрлал, өнцгөөс байршуулснаар объектуудыг өргөн хүрээний нөхцөлд хамарсан датасет бүрдүүлэх боломжтой болно.
+
+\section{Объект таних алгоритм}
+
+Объект таних алгоритмыг хэрэгжүүлэхэд YOLOv12 загварыг сонгон ашигласан. Сургалтад симуляцийн орчинд боловсруулсан датасетийг ашигласан бөгөөд, сургасан загварыг симуляцийн орчинтой холбон туршсан.
+
+\subsection{Сургалт}
+
+Сургалтыг YOLOv12 загварын жин \textit{(pre-trained weights)} дээр суурилан шилжүүлэн сургах \textit{(transfer learning)} аргаар явуулсан. Сургалтад симуляцийн орчинд үүсгэсэн датасетийг ашигласан бөгөөд, датасет нь олон янзын гэрэлтүүлэг, байрлал, өнцгийн нөхцөлийг хамарсан байна.
+
+\subsection{HTTP сервер}
+
+Сургасан загварыг симуляцийн орчинд туршихын тулд Python хэл дээр HTTP сервер үүсгэсэн. Серверийн үндсэн үүрэг нь симуляцийн орчин болон объект таних алгоритмын хооронд зуучлах явдал юм. Үйл ажиллагааны дараалал дараах байдалтай:
+
+\begin{enumerate}
+    \item Симуляцийн орчин камерын зургийг HTTP хүсэлтээр серверт илгээнэ.
+    \item Сервер хүлээн авсан зургийг YOLOv12 загварт дамжуулан боловсруулна.
+    \item Загвараас гарсан үр дүнг серверээс симуляцийн орчинд буцаан илгээнэ.
+    \item Симуляцийн орчин хүлээн авсан үр дүнд үндэслэн таньсан объект бүрийн нэр болон хязгаарлах тэгш өнцөгтийг дэлгэцэн дээр дүрсэлнэ.
+\end{enumerate}
+
+\begin{figure}[H]
+\centering
+\begin{tikzpicture}[
+    box/.style={
+        rectangle, draw, rounded corners=4pt,
+        minimum width=3.2cm, minimum height=1.2cm,
+        text centered, align=center, font=\small
+    },
+    arr/.style={->, >=Stealth, thick},
+    lbl/.style={font=\footnotesize},
+    stepnum/.style={circle, draw, fill=white, inner sep=1.5pt, font=\scriptsize\bfseries}
+]
+    \node[box, fill=blue!10]    (unity)  {Unity\\Симуляци};
+    \node[box, fill=green!10,  right=5.5cm of unity] (server) {Python\\HTTP Сервер};
+    \node[box, fill=orange!10, below=2.5cm of server] (yolo)   {YOLOv12\\загвар};
+
+    % 1. Unity -> Server
+    \draw[arr] ([yshift=4mm]unity.east) -- ([yshift=4mm]server.west)
+        node[midway, above, lbl] {Камерын зураг (HTTP POST)}
+        node[pos=0.1, stepnum] {1};
+
+    % 2. Server -> YOLO
+    \draw[arr] ([xshift=4mm]server.south) -- ([xshift=4mm]yolo.north)
+        node[midway, right, lbl] {Зураг}
+        node[pos=0.1, stepnum] {2};
+
+    % 3. YOLO -> Server
+    \draw[arr] ([xshift=-4mm]yolo.north) -- ([xshift=-4mm]server.south)
+        node[midway, left, lbl] {Үр дүн}
+        node[pos=0.1, stepnum] {3};
+
+    % 4. Server -> Unity
+    \draw[arr] ([yshift=-4mm]server.west) -- ([yshift=-4mm]unity.east)
+        node[midway, below, lbl] {Түүхий дата (HTTP Response)}
+        node[pos=0.1, stepnum] {4};
+
+\end{tikzpicture}
+\caption{HTTP серверийн харилцааны диаграмм}
+\label{fig:http-server-diagram}
+\end{figure}
+
+\subsection{Дата дамжуулалт}
+
+Сервер нь таньсан объект бүрийн байршил, хэмжээ болон ангиллын дугаарыг дараалласан түүхий дата \textit{(raw binary data)} хэлбэрээр буцаана. Анхны хэрэгжүүлэлтэд JSON форматыг ашиглаж туршсан боловч, хоёр форматыг харьцуулахад дараах ялгаа ажиглагдсан:
+
+\begin{itemize}
+    \item JSON дата: дунджаар $\sim$2000 байт
+    \item Түүхий дата: дунджаар $\sim$200 байт
+\end{itemize}
+
+Түүхий дата нь JSON-тай харьцуулахад дунджаар 10 дахин бага хэмжээтэй байсан. Мөн боловсруулах кодын хувьд мөн түүхий дата боловсруулах нь JSON-ийг задлан шинжлэхээс бага бичигдсэн тул түүхий дата форматыг эцсийн шийдэл болгон ашиглахаар болсон.
 
 \section{Шийдвэр гаргах алгоритм}
 
