@@ -5,8 +5,8 @@
       "tools": ["xelatex"]
     },
     {
-      "name": "XeLaTeX + Bibtex",
-      "tools": ["xelatex", "bibtex", "xelatex", "xelatex"]
+      "name": "Bibtex + XeLaTeX",
+      "tools": ["bibtex", "xelatex", "xelatex"]
     },
     {
       "name": "latexmk (XeLaTeX)",

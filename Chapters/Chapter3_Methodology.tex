@@ -148,22 +148,22 @@ def generate_label(object):
     % 1. Unity -> Server
     \draw[arr] ([yshift=4mm]unity.east) -- ([yshift=4mm]server.west)
         node[midway, above, lbl] {Камерын зураг (HTTP POST)}
-        node[pos=0.1, below=3mm, stepnum] {1};
+        node[pos=0.1, stepnum] {1};
 
     % 2. Server -> YOLO
     \draw[arr] ([xshift=4mm]server.south) -- ([xshift=4mm]yolo.north)
         node[midway, right, lbl] {Зураг}
-        node[pos=0.1, left=3mm, stepnum] {2};
+        node[pos=0.1, stepnum] {2};
 
     % 3. YOLO -> Server
     \draw[arr] ([xshift=-4mm]yolo.north) -- ([xshift=-4mm]server.south)
         node[midway, left, lbl] {Үр дүн}
-        node[pos=0.1, right=3mm, stepnum] {3};
+        node[pos=0.1, stepnum] {3};
 
     % 4. Server -> Unity
     \draw[arr] ([yshift=-4mm]server.west) -- ([yshift=-4mm]unity.east)
         node[midway, below, lbl] {Түүхий дата (HTTP Response)}
-        node[pos=0.1, above=3mm, stepnum] {4};
+        node[pos=0.1, stepnum] {4};
 
 \end{tikzpicture}
 \caption{HTTP серверийн харилцааны диаграм}
